@@ -1,0 +1,102 @@
+[
+  {
+    "id": "1",
+    "name": "Blue Sentinel",
+    "campType": "Blue Buff",
+    "description": "Grants mana regen and reduced ability cooldowns. Usually taken by the jungler or mid laner first.",
+    "respawnMinutes": 5,
+    "latitude": 52.3579,
+    "longitude": 4.8686,
+    "image": "https://static.wikia.nocookie.net/leagueoflegends/images/6/6d/Blue_Sentinel.png"
+  },
+  {
+    "id": "2",
+    "name": "Red Brambleback",
+    "campType": "Red Buff",
+    "description": "Grants bonus damage and slows on hit. Very strong for junglers who fight a lot.",
+    "respawnMinutes": 5,
+    "latitude": 52.3260,
+    "longitude": 4.8203,
+    "image": "https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Red_Brambleback.png"
+  },
+  {
+    "id": "3",
+    "name": "Gromp",
+    "campType": "Solo Camp",
+    "description": "A tanky solo monster hiding in the corner of the jungle, usually the first camp cleared.",
+    "respawnMinutes": 2,
+    "latitude": 52.3874,
+    "longitude": 4.8709,
+    "image": "https://static.wikia.nocookie.net/leagueoflegends/images/2/2a/Gromp.png"
+  },
+  {
+    "id": "4",
+    "name": "Murk Wolves",
+    "campType": "Wolves",
+    "description": "A pack of wolves led by a larger alpha wolf.",
+    "respawnMinutes": 2,
+    "latitude": 52.3560,
+    "longitude": 4.8975,
+    "image": "https://static.wikia.nocookie.net/leagueoflegends/images/9/95/Murk_Wolf.png"
+  },
+  {
+    "id": "5",
+    "name": "Razorbeaks",
+    "campType": "Raptors",
+    "description": "A flock of raptors that swarm quickly if not handled carefully.",
+    "respawnMinutes": 2,
+    "latitude": 52.3600,
+    "longitude": 4.9186,
+    "image": "https://static.wikia.nocookie.net/leagueoflegends/images/8/85/Razorbeak.png"
+  },
+  {
+    "id": "6",
+    "name": "Krugs",
+    "campType": "Krugs",
+    "description": "A rock camp that splits into smaller krugs when the big one dies.",
+    "respawnMinutes": 2,
+    "latitude": 52.3629,
+    "longitude": 4.8480,
+    "image": "https://static.wikia.nocookie.net/leagueoflegends/images/3/3b/Krug.png"
+  },
+  {
+    "id": "7",
+    "name": "Scuttle Crab",
+    "campType": "River Camp",
+    "description": "Grants vision and gold, found in the river. Contested by both junglers.",
+    "respawnMinutes": 3,
+    "latitude": 52.3547,
+    "longitude": 4.9491,
+    "image": "https://static.wikia.nocookie.net/leagueoflegends/images/1/13/Scuttle_Crab.png"
+  },
+  {
+    "id": "8",
+    "name": "Rift Herald",
+    "campType": "Epic Monster",
+    "description": "A powerful early-game epic monster that helps push down turrets.",
+    "respawnMinutes": 6,
+    "latitude": 52.3079,
+    "longitude": 4.9822,
+    "image": "https://static.wikia.nocookie.net/leagueoflegends/images/c/c1/Rift_Herald.png"
+  },
+  {
+    "id": "9",
+    "name": "Baron Nashor",
+    "campType": "Epic Monster",
+    "description": "The most powerful epic monster, granting a game-changing buff to the whole team.",
+    "respawnMinutes": 7,
+    "latitude": 52.3446,
+    "longitude": 4.8875,
+    "image": "https://static.wikia.nocookie.net/leagueoflegends/images/e/e1/Baron_Nashor.png"
+  },
+  {
+    "id": "10",
+    "name": "Elemental Drake",
+    "campType": "Dragon",
+    "description": "Grants a permanent elemental buff to the team that kills it.",
+    "respawnMinutes": 5,
+    "latitude": 52.3111,
+    "longitude": 4.9563,
+    "image": "https://static.wikia.nocookie.net/leagueoflegends/images/4/44/Elemental_Drake.png"
+  }
+]
