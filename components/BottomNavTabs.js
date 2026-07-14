@@ -1,22 +1,12 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Text} from 'react-native';
+import {Ionicons} from '@expo/vector-icons';
 import HomePage from '../screens/HomePage';
 import MapPage from '../screens/MapPage';
 import ProfilePage from '../screens/ProfilePage';
 import {useTheme} from './ThemeContext';
 
 const Tab = createBottomTabNavigator();
-
-// Simple text-based icons so no extra icon library is required for the starter.
-// Swap these for @expo/vector-icons later if you want nicer icons.
-function TabIcon({symbol, focused, color}) {
-    return (
-        <Text style={{fontSize: 20, opacity: focused ? 1 : 0.5, color}}>
-            {symbol}
-        </Text>
-    );
-}
 
 export default function BottomNavTabs() {
     const {colors} = useTheme();
@@ -36,8 +26,8 @@ export default function BottomNavTabs() {
                 component={HomePage}
                 options={{
                     title: 'Jungle Camps',
-                    tabBarIcon: ({focused, color}) => (
-                        <TabIcon symbol="🌿" focused={focused} color={color}/>
+                    tabBarIcon: ({focused, color, size}) => (
+                        <Ionicons name={focused ? 'paw' : 'paw-outline'} color={color} size={size}/>
                     ),
                 }}
             />
@@ -46,8 +36,8 @@ export default function BottomNavTabs() {
                 component={MapPage}
                 options={{
                     title: 'Map',
-                    tabBarIcon: ({focused, color}) => (
-                        <TabIcon symbol="🗺️" focused={focused} color={color}/>
+                    tabBarIcon: ({focused, color, size}) => (
+                        <Ionicons name={focused ? 'map' : 'map-outline'} color={color} size={size}/>
                     ),
                 }}
             />
@@ -56,8 +46,8 @@ export default function BottomNavTabs() {
                 component={ProfilePage}
                 options={{
                     title: 'Settings',
-                    tabBarIcon: ({focused, color}) => (
-                        <TabIcon symbol="⚙️" focused={focused} color={color}/>
+                    tabBarIcon: ({focused, color, size}) => (
+                        <Ionicons name={focused ? 'settings' : 'settings-outline'} color={color} size={size}/>
                     ),
                 }}
             />
