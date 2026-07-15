@@ -18,12 +18,15 @@ import {isFavorite, toggleFavorite} from '../components/isfavorite';
 
 export default function HomePage({navigation}) {
     const {colors, layoutMode} = useTheme();
+
     const [camps, setCamps] = useState([]);
     const [favorites, setFavorites] = useState({});
     const [loading, setLoading] = useState(true);
     const [refreshing, setRefreshing] = useState(false);
     const [error, setError] = useState(null);
-    const [detailCamp, setDetailCamp] = useState(null); // camp shown in the details modal
+
+    const [detailCamp, setDetailCamp] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null); // FULLSCREEN IMAGE VIEWER
 
     const loadCamps = useCallback(async () => {
         try {
@@ -78,7 +81,7 @@ export default function HomePage({navigation}) {
     return (
         <>
             <FlatList
-                key={isGrid ? 'grid' : 'list'} // force re-layout when numColumns changes
+                key={isGrid ? 'grid' : 'list'}
                 style={{backgroundColor: colors.background}}
                 contentContainerStyle={styles.listContent}
                 data={camps}
@@ -99,6 +102,7 @@ export default function HomePage({navigation}) {
                             source={{uri: item.image}}
                             style={isGrid ? styles.gridImage : styles.listImage}
                         />
+
                         <View style={styles.cardText}>
                             <Text style={[styles.title, {color: colors.text}]}>
                                 {item.name}
@@ -107,12 +111,18 @@ export default function HomePage({navigation}) {
                                 {item.campType}
                             </Text>
                         </View>
+
                         <TouchableOpacity
                             onPress={() => setDetailCamp(item)}
                             style={styles.iconButton}
                         >
-                            <Ionicons name="information-circle-outline" size={22} color={colors.subtext}/>
+                            <Ionicons
+                                name="information-circle-outline"
+                                size={22}
+                                color={colors.subtext}
+                            />
                         </TouchableOpacity>
+
                         <TouchableOpacity
                             onPress={() => onToggleFavorite(item.id)}
                             style={styles.iconButton}
@@ -127,6 +137,7 @@ export default function HomePage({navigation}) {
                 )}
             />
 
+            {/* DETAILS MODAL */}
             <Modal
                 visible={!!detailCamp}
                 animationType="slide"
@@ -144,17 +155,25 @@ export default function HomePage({navigation}) {
 
                         {detailCamp && (
                             <ScrollView showsVerticalScrollIndicator={false}>
-                                <Image
-                                    source={{uri: detailCamp.image}}
-                                    style={styles.detailImage}
-                                />
+
+                                {/* CLICKABLE IMAGE → FULLSCREEN */}
+                                <TouchableOpacity onPress={() => setImagePreview(detailCamp.image)}>
+                                    <Image
+                                        source={{uri: detailCamp.image}}
+                                        style={styles.detailImage}
+                                    />
+                                </TouchableOpacity>
+
                                 <Text style={[styles.detailTitle, {color: colors.text}]}>
                                     {detailCamp.name}
                                 </Text>
-                                <View style={[styles.badge, {
-                                    backgroundColor: colors.background,
-                                    borderColor: colors.border
-                                }]}>
+
+                                <View
+                                    style={[
+                                        styles.badge,
+                                        {backgroundColor: colors.background, borderColor: colors.border},
+                                    ]}
+                                >
                                     <Text style={{color: colors.subtext, fontWeight: '600'}}>
                                         {detailCamp.campType}
                                     </Text>
@@ -187,6 +206,29 @@ export default function HomePage({navigation}) {
                     </View>
                 </View>
             </Modal>
+
+            {/* FULLSCREEN IMAGE VIEWER */}
+            <Modal
+                visible={!!imagePreview}
+                transparent
+                animationType="fade"
+                onRequestClose={() => setImagePreview(null)}
+            >
+                <View style={styles.fullscreenBackdrop}>
+                    <TouchableOpacity
+                        style={styles.fullscreenClose}
+                        onPress={() => setImagePreview(null)}
+                    >
+                        <Ionicons name="close" size={32} color="#fff"/>
+                    </TouchableOpacity>
+
+                    <Image
+                        source={{uri: imagePreview}}
+                        style={styles.fullscreenImage}
+                        resizeMode="contain"
+                    />
+                </View>
+            </Modal>
         </>
     );
 }
@@ -194,6 +236,7 @@ export default function HomePage({navigation}) {
 const styles = StyleSheet.create({
     center: {flex: 1, alignItems: 'center', justifyContent: 'center'},
     listContent: {padding: 12},
+
     listCard: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -202,6 +245,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 10,
     },
+
     gridCard: {
         flex: 1,
         margin: 6,
@@ -210,11 +254,14 @@ const styles = StyleSheet.create({
         padding: 10,
         alignItems: 'center',
     },
+
     listImage: {width: 56, height: 56, borderRadius: 8, marginRight: 12},
     gridImage: {width: 72, height: 72, borderRadius: 8, marginBottom: 8},
+
     cardText: {flex: 1},
     title: {fontSize: 16, fontWeight: '600'},
     subtitle: {fontSize: 13, marginTop: 2},
+
     iconButton: {padding: 6},
 
     modalBackdrop: {
@@ -222,15 +269,25 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.5)',
         justifyContent: 'flex-end',
     },
+
     modalCard: {
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
         padding: 20,
         maxHeight: '80%',
     },
+
     closeButton: {alignSelf: 'flex-end', marginBottom: 8},
-    detailImage: {width: '100%', height: 180, borderRadius: 12, marginBottom: 14},
+
+    detailImage: {
+        width: '100%',
+        height: 180,
+        borderRadius: 12,
+        marginBottom: 14,
+    },
+
     detailTitle: {fontSize: 22, fontWeight: '700', marginBottom: 8},
+
     badge: {
         alignSelf: 'flex-start',
         borderWidth: 1,
@@ -239,9 +296,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         marginBottom: 12,
     },
+
     detailRow: {flexDirection: 'row', alignItems: 'center', marginBottom: 12},
     detailRowText: {marginLeft: 6, fontSize: 14},
+
     description: {fontSize: 15, lineHeight: 22, marginBottom: 20},
+
     mapButton: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -250,5 +310,26 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         marginBottom: 10,
     },
+
     mapButtonText: {color: '#fff', fontWeight: '600', marginLeft: 8, fontSize: 15},
+
+    /* FULLSCREEN IMAGE VIEWER */
+    fullscreenBackdrop: {
+        flex: 1,
+        backgroundColor: 'rgba(0,0,0,0.95)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    fullscreenImage: {
+        width: '100%',
+        height: '100%',
+    },
+
+    fullscreenClose: {
+        position: 'absolute',
+        top: 40,
+        right: 20,
+        zIndex: 10,
+    },
 });
