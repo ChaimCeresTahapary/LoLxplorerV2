@@ -67,7 +67,7 @@
     "respawnMinutes": 3,
     "latitude": 52.3547,
     "longitude": 4.9491,
-    "image": "https://wiki.leagueoflegends.com/en-us/images/Scuttle_Crab_OriginalSkin.jpg?4def6"
+    "image": "https://wiki.leagueoflegends.com/en-us/images/Rift_Scuttler_OriginalSkin.jpg?cf240"
   },
   {
     "id": "8",
@@ -77,7 +77,7 @@
     "respawnMinutes": 6,
     "latitude": 52.3079,
     "longitude": 4.9822,
-    "image": "https://wiki.leagueoflegends.com/en-us/images/Rift_Herald_OriginalSkin.jpg?4def6"
+    "image": "https://leagueoflegends.fandom.com/wiki/Rift_Herald?file=99NU001-full.png"
   },
   {
     "id": "9",
@@ -97,6 +97,5 @@
     "respawnMinutes": 5,
     "latitude": 52.3111,
     "longitude": 4.9563,
-    "image": "https://wiki.leagueoflegends.com/en-us/images/Elemental_Drake_OriginalSkin.jpg?4def6"
-  }
+    "image": "https://wiki.leagueoflegends.com/en-us/images/thumb/Dragon_OriginalSkin.jpg/1920px-Dragon_OriginalSkin.jpg?e3a8e",
 ]
